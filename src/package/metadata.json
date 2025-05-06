@@ -1,0 +1,22 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "m.liu.jin@gmail.com",
+                "Name": "Jin Liu"
+            }
+        ],
+        "BugReportUrl": "https://github.com/jinliu/plasma-applet-background-apps/issues",
+        "Category": "System Information",
+        "Description": "List XDG Desktop Background Apps",
+        "EnabledByDefault": true,
+        "Icon": "applications-all-symbolic",
+        "Id": "io.github.jinliu.backgroundapps",
+        "License": "GPL-2.0+",
+        "Name": "Background Apps",
+        "Website": "https://kde.org/plasma-desktop"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-NotificationAreaCategory": "SystemServices"
+}
