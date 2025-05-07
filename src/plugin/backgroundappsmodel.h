@@ -1,8 +1,9 @@
 /*
-    SPDX-FileCopyrightText: 2025 Jin Liu <m.liu.jin@gmail.com>
+    SPDX-FileCopyrightText: 2025 <m.liu.jin@gmail.com>
 
-    SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+    SPDX-License-Identifier: GPL-2.0-or-later
 */
+
 
 #pragma once
 

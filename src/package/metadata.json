@@ -16,7 +16,7 @@
         "License": "GPL-2.0+",
         "Name": "Background Apps",
         "Version": "0.1",
-        "Website": "https://kde.org/plasma-desktop"
+        "Website": "https://github.com/jinliu/plasma-applet-background-apps"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-NotificationAreaCategory": "SystemServices"
