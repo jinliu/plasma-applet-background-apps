@@ -166,7 +166,7 @@ void BackgroundAppsModel::activateApp(const QString &instance) {
 }
 
 void BackgroundAppsModel::quitApp(const QString &instance) {
-    for (auto &app: m_apps) {
+    for (App app: m_apps) {
         if (app.instance != instance) {
             continue;
         }
@@ -177,10 +177,19 @@ void BackgroundAppsModel::quitApp(const QString &instance) {
         QDBusPendingCall pcall = dbusInterface->asyncCall(QLatin1String("ActivateAction"), QLatin1String("quit"), QList<QVariant>(), QVariantMap());
         auto watcher = new QDBusPendingCallWatcher(pcall, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
-            [dbusInterface](QDBusPendingCallWatcher *w) {
+            [this, dbusInterface, app](QDBusPendingCallWatcher *w) {
                 QDBusPendingReply reply(*w);
                 if (reply.isError()) {
                     qWarning() << "Failed to kill background apps via dbus:" << reply.error().message();
+                } else {
+                    beginResetModel();
+                    for (int i = 0; i < m_apps.count(); ++i) {
+                        if (m_apps[i].instance == app.instance) {
+                            m_apps.removeAt(i);
+                            break;
+                        }
+                    }
+                    endResetModel();
                 }
                 
                 w->deleteLater();
