@@ -146,7 +146,9 @@ void BackgroundAppsModel::activateApp(const QString &instance) {
         }
 
         const QString dbugService = app.appId;
-        const QString dbusPath = QStringLiteral("/") + app.appId.replace(QLatin1Char('.'), QLatin1Char('/')).replace(QLatin1Char('-'), QLatin1Char('_'));
+        QString dbusPath = app.appId;
+        dbusPath.replace(QLatin1Char('.'), QLatin1Char('/')).replace(QLatin1Char('-'), QLatin1Char('_'));
+        dbusPath = QStringLiteral("/") + dbusPath;
         auto dbusInterface = new QDBusInterface(dbugService, dbusPath, DBUS_INTERFACE_FDO_APPLICATION, QDBusConnection::sessionBus(), this);
         QDBusPendingCall pcall = dbusInterface->asyncCall(QLatin1String("Activate"), QVariantMap());
         auto watcher = new QDBusPendingCallWatcher(pcall, this);
