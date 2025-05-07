@@ -20,22 +20,36 @@ class BackgroundAppsModel : public QAbstractListModel
     enum BackgroundAppsModelRole {
         AppIdRole = Qt::UserRole + 1, // TODO this should be Qt::DisplayRole
         InstanceRole,
-        MessageRole
+        MessageRole,
+        AppNameRole,
+        AppIconRole
     };
 
     struct App {
         QString appId;
         QString instance;
         QString message;
+        QString appName;
+        QString appIcon;
     };
 
 public:
     explicit BackgroundAppsModel(QObject *parent = nullptr);
     ~BackgroundAppsModel() override;
 
+    Q_PROPERTY(int count READ count NOTIFY countChanged)
+
+    Q_INVOKABLE void activateApp(const QString &instance);
+    Q_INVOKABLE void quitApp(const QString &instance);
+
+    int count() const;
+
     QVariant data(const QModelIndex &index, int role) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QHash<int, QByteArray> roleNames() const override;
+
+Q_SIGNALS:
+    void countChanged();
 
 private Q_SLOTS:
     void dbusPropertiesChanged(const QString &interfaceName,

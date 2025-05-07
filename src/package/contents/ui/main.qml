@@ -11,7 +11,6 @@ import QtQuick
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
 import org.kde.kirigami as Kirigami
-import org.kde.pipewire.monitor as Monitor
 
 import io.github.jinliu.backgroundappsplugin
 
@@ -24,7 +23,7 @@ PlasmoidItem {
     switchHeight: Kirigami.Units.gridUnit * 12
 
     Plasmoid.icon: "applications-all-symbolic"
-    Plasmoid.status: PlasmaCore.Types.ActiveStatus
+    Plasmoid.status: model.count > 0 ? PlasmaCore.Types.ActiveStatus : PlasmaCore.Types.HiddenStatus
 
     fullRepresentation: FullRepresentation {
     }

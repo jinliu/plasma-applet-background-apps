@@ -36,6 +36,7 @@ message("Plugin Id: ${PLUGIN_ID}")
 message("Version: ${CUR_VERSION}")
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED)
+find_package(KF6 REQUIRED Service)
 find_package(Plasma REQUIRED)
 
 add_subdirectory(src)

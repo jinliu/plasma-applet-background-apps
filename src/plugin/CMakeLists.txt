@@ -5,7 +5,8 @@ target_include_directories(backgroundappsplugin PUBLIC ${CMAKE_CURRENT_SOURCE_DI
     
 target_link_libraries(backgroundappsplugin PRIVATE
                     Qt::Core
-                    Qt::DBus)
+                    Qt::DBus
+                    KF6::Service)
 
 ecm_add_qml_module(backgroundappsplugin URI io.github.jinliu.backgroundappsplugin GENERATE_PLUGIN_SOURCE)
 
