@@ -22,9 +22,11 @@ PC3.Page {
         anchors.fill: parent
 
         model: backgroundapps.expanded ? backgroundapps.model : null
+        spacing: Kirigami.Units.gridUnit
 
         delegate: PlasmaExtras.ListItem {
             width: appList.width
+            implicitHeight: appRow.implicitHeight
 
             required property string appId
             required property string instance
@@ -33,6 +35,7 @@ PC3.Page {
             required property string appIcon
 
             RowLayout {
+                id: appRow
                 anchors.fill: parent
 
                 Kirigami.Icon {
