@@ -15,6 +15,7 @@
         "Id": "io.github.jinliu.backgroundapps",
         "License": "GPL-2.0+",
         "Name": "Background Apps",
+        "Version": "0.1",
         "Website": "https://kde.org/plasma-desktop"
     },
     "X-Plasma-API-Minimum-Version": "6.0",
