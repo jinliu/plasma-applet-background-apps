@@ -31,3 +31,7 @@ sudo make uninstall
 ## Screenshots
 
 ![Screenshot_20250507_041228](https://github.com/user-attachments/assets/fa34e633-09ef-4940-9527-12af3077deab)
+
+## Known Problems
+
+It only works with Flatpak apps. This is a limitation in the XDG desktop portal, not in this applet.
