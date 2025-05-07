@@ -35,10 +35,10 @@ BackgroundAppsModel::BackgroundAppsModel(QObject *parent)
             QDBusPendingReply<QVariant> reply(*w);
             if (reply.isError()) {
                 qWarning() << "Failed to get background apps:" << reply.error().message();
-                return;
+            } else {
+                auto dbusReply = qdbus_cast<QList<QVariantMap>>(reply.value());
+                updateApps(dbusReply);
             }
-            auto dbusReply = qdbus_cast<QList<QVariantMap>>(reply.value());
-            updateApps(dbusReply);
             w->deleteLater();
             dbusInterface->deleteLater();
         });
@@ -157,7 +157,6 @@ void BackgroundAppsModel::activateApp(const QString &instance) {
                 QDBusPendingReply reply(*w);
                 if (reply.isError()) {
                     qWarning() << "Failed to activate background apps via dbus:" << reply.error().message();
-                    return;
                 }
                 
                 w->deleteLater();
@@ -182,7 +181,6 @@ void BackgroundAppsModel::quitApp(const QString &instance) {
                 QDBusPendingReply reply(*w);
                 if (reply.isError()) {
                     qWarning() << "Failed to kill background apps via dbus:" << reply.error().message();
-                    return;
                 }
                 
                 w->deleteLater();
