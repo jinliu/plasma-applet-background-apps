@@ -152,7 +152,7 @@ void BackgroundAppsModel::activateApp(const QString &instance) {
         auto watcher = new QDBusPendingCallWatcher(pcall, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
             [dbusInterface](QDBusPendingCallWatcher *w) {
-                QDBusPendingReply<QVariant> reply(*w);
+                QDBusPendingReply reply(*w);
                 if (reply.isError()) {
                     qWarning() << "Failed to activate background apps via dbus:" << reply.error().message();
                     return;
@@ -177,7 +177,7 @@ void BackgroundAppsModel::quitApp(const QString &instance) {
         auto watcher = new QDBusPendingCallWatcher(pcall, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
             [dbusInterface](QDBusPendingCallWatcher *w) {
-                QDBusPendingReply<QVariant> reply(*w);
+                QDBusPendingReply reply(*w);
                 if (reply.isError()) {
                     qWarning() << "Failed to kill background apps via dbus:" << reply.error().message();
                     return;
