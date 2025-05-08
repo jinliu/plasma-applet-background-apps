@@ -190,6 +190,7 @@ void BackgroundAppsModel::quitApp(const QString &instance) {
                         }
                     }
                     endResetModel();
+                    Q_EMIT countChanged();
                 }
                 
                 w->deleteLater();
