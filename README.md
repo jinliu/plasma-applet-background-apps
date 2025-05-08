@@ -19,7 +19,7 @@ systemctl --user restart plasma-plasmashell
 Now you can enable "Background Apps" in the system tray settings.
 
 NOTE: The above installs files to `/usr`, because this applet contains C++ code and Plasma doesn't
-look in you $HOME for it. 
+look in your $HOME or `/usr/local` for it. 
 
 ### Uninstall
 
